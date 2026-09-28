@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--
+      Content Security Policy:
+      - default-src 'self' — only allow resources from same origin
+      - script-src — allow self + unsafe-inline (Vite HMR / React). Tighten in prod.
+      - img-src — allow images from self + data: (for inline thumbnails) + https:
+      - connect-src — allow Supabase + backend API + any HTTPS
+      - object-src 'none' — block Flash/plugins
+      NOTE: frame-ancestors must be set as HTTP header on the web server,
+      it's ignored when delivered via <meta>. Set X-Frame-Options: DENY
+      and Content-Security-Policy: frame-ancestors 'none' in nginx/caddy.
+    -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval';
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' data: https://fonts.gstatic.com;
+      img-src 'self' data: blob: https:;
+      media-src 'self' blob: https:;
+      connect-src 'self' https: wss: ws:;
+      frame-src 'self';
+      base-uri 'self';
+      form-action 'self';
+      object-src 'none';
+    " />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <title>Free To-Do Planner</title>
+    <meta name="description" content="Управление на проекти и задачи" />
+
+    <meta property="og:title" content="Free To-Do Planner" />
+    <meta property="og:description" content="Self-hosted planner for projects, tasks, notes and spreadsheets" />
+    <meta property="og:type" content="website" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

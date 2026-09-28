@@ -1,0 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ProjectHub - Colorful & Playful Design System */
+
+@layer base {
+  :root {
+    --background: 220 25% 97%;
+    --foreground: 230 25% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 230 25% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 25% 18%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 330 81% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 20% 92%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 174 72% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 88%;
+    --input: 220 20% 88%;
+    --ring: 262 83% 58%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 230 25% 18%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 20% 96%;
+    --sidebar-accent-foreground: 230 25% 18%;
+    --sidebar-border: 220 20% 90%;
+    --sidebar-ring: 262 83% 58%;
+
+    /* Project colors */
+    --project-red: 0 84% 60%;
+    --project-orange: 25 95% 53%;
+    --project-amber: 38 92% 50%;
+    --project-yellow: 48 96% 53%;
+    --project-lime: 84 81% 44%;
+    --project-green: 142 71% 45%;
+    --project-teal: 174 72% 56%;
+    --project-cyan: 189 94% 43%;
+    --project-blue: 217 91% 60%;
+    --project-indigo: 239 84% 67%;
+    --project-purple: 262 83% 58%;
+    --project-pink: 330 81% 60%;
+
+    /* Priority colors */
+    --priority-low: 142 71% 45%;
+    --priority-medium: 38 92% 50%;
+    --priority-high: 0 84% 60%;
+
+    /* Highlight colors */
+    --highlight-yellow: 48 100% 85%;
+    --highlight-green: 142 76% 85%;
+    --highlight-blue: 217 91% 85%;
+    --highlight-pink: 330 100% 90%;
+    --highlight-purple: 262 100% 90%;
+    --highlight-orange: 25 100% 88%;
+    --highlight-red: 0 100% 90%;
+    --highlight-teal: 174 80% 85%;
+    --highlight-gray: 220 14% 90%;
+    --highlight-lime: 84 80% 85%;
+
+    --chart-1: 262 83% 58%;
+    --chart-2: 330 81% 60%;
+    --chart-3: 174 72% 56%;
+    --chart-4: 217 91% 60%;
+    --chart-5: 38 92% 50%;
+
+    --font-sans: 'Nunito', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  }
+
+  .dark {
+    --background: 230 25% 10%;
+    --foreground: 220 20% 95%;
+
+    --card: 230 25% 14%;
+    --card-foreground: 220 20% 95%;
+
+    --popover: 230 25% 14%;
+    --popover-foreground: 220 20% 95%;
+
+    --primary: 262 83% 65%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 330 81% 65%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 230 20% 22%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 174 72% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 230 20% 25%;
+    --input: 230 20% 25%;
+    --ring: 262 83% 65%;
+
+    --sidebar-background: 230 25% 12%;
+    --sidebar-foreground: 220 20% 95%;
+    --sidebar-primary: 262 83% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 230 20% 18%;
+    --sidebar-accent-foreground: 220 20% 95%;
+    --sidebar-border: 230 20% 22%;
+    --sidebar-ring: 262 83% 65%;
+
+    --chart-1: 262 83% 65%;
+    --chart-2: 330 81% 65%;
+    --chart-3: 174 72% 56%;
+    --chart-4: 217 91% 65%;
+    --chart-5: 38 92% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+  
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+/* TipTap Editor Styles */
+.tiptap-editor {
+  line-height: 1.6;
+  max-width: none;
+  font-size: 0.875rem;
+}
+
+.tiptap-editor h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: hsl(var(--foreground));
+}
+
+.tiptap-editor h2 {
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: hsl(var(--foreground));
+}
+
+.tiptap-editor h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
+  color: hsl(var(--foreground));
+}
+
+.tiptap-editor p {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.tiptap-editor ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.tiptap-editor ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+.tiptap-editor li {
+  margin: 0.15rem 0;
+}
+
+.tiptap-editor strong {
+  font-weight: 700;
+}
+
+.tiptap-editor em {
+  font-style: italic;
+}
+
+.tiptap-editor s {
+  text-decoration: line-through;
+}
+
+.tiptap-editor u {
+  text-decoration: underline;
+}
+
+.tiptap-editor a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tiptap-editor mark {
+  border-radius: 2px;
+  padding: 0 2px;
+}
+
+/* TipTap Table Styles */
+.tiptap-editor table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 0.75rem 0;
+  overflow: hidden;
+  border-radius: 0.375rem;
+  border: 1px solid hsl(var(--border));
+}
+
+.tiptap-editor th,
+.tiptap-editor td {
+  border: 1px solid hsl(var(--border));
+  padding: 0.5rem 0.75rem;
+  min-width: 80px;
+  vertical-align: top;
+  position: relative;
+}
+
+.tiptap-editor th {
+  background: hsl(var(--muted));
+  font-weight: 600;
+  text-align: left;
+}
+
+.tiptap-editor td {
+  background: hsl(var(--card));
+}
+
+.tiptap-editor .selectedCell {
+  background: hsl(var(--primary) / 0.1);
+}
+
+.tiptap-editor .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: hsl(var(--primary));
+  cursor: col-resize;
+}
+
+.tiptap-editor .tableWrapper {
+  overflow-x: auto;
+  margin: 0.75rem 0;
+}

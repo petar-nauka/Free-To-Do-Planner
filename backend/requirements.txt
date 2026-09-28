@@ -1,0 +1,12 @@
+fastapi==0.110.1
+starlette==0.37.2
+uvicorn==0.25.0
+APScheduler==3.11.2
+httpx==0.28.1
+motor==3.3.1
+pymongo==4.5.0
+pydantic==2.12.5
+python-dotenv==1.2.1
+slowapi==0.1.9
+limits==5.8.0
+pytest==9.0.2

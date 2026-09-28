@@ -1,0 +1,376 @@
+/**
+ * Вестникарският стил на страницата /sport.
+ *
+ * ВСИЧКО е вгнездено под .sport-page — включително дефиницията на променливите.
+ * Извън този контейнер няма нито едно активно правило, затова файлът не може да
+ * повлияе на останалите страници (приложението е Tailwind с darkMode: ["class"]).
+ *
+ * Страницата остава светла и в тъмна тема. Това е нарочно: тя е дневник, не работен екран.
+ */
+
+.sport-page{
+  --paper:#f3ecdf; --paper-light:#fbf7ef; --paper-deep:#e4d7c2;
+  --ink:#18324a; --ink-soft:#607181;
+  --terracotta:#bd6149; --terracotta-dark:#8f4131;
+  --sage:#71856f; --sage-dark:#4f6250;
+  --line:rgba(24,50,74,.17);
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:Aptos,"Segoe UI",Arial,sans-serif;
+  min-height:100vh; color:var(--ink); font-family:var(--sans);
+  background:radial-gradient(circle at 8% 8%,rgba(255,255,255,.58),transparent 28rem),
+             radial-gradient(circle at 90% 60%,rgba(189,97,73,.1),transparent 32rem),#d8cdbd;
+}
+.sport-page button,.sport-page input,.sport-page select,.sport-page textarea{font:inherit}
+.sport-page button,.sport-page a{-webkit-tap-highlight-color:transparent}
+.sport-page a{color:inherit;text-decoration:none}
+.sport-page button:focus-visible,.sport-page a:focus-visible,.sport-page input:focus-visible
+  {outline:3px solid rgba(189,97,73,.45);outline-offset:3px}
+
+.sport-page .shell{width:min(1400px,calc(100% - 30px));margin:16px auto;overflow:hidden;
+  background:linear-gradient(90deg,transparent 0 39px,rgba(189,97,73,.2) 39px 40px,transparent 40px),
+             repeating-linear-gradient(0deg,rgba(24,50,74,.02) 0 1px,transparent 1px 32px),var(--paper);
+  border:1px solid rgba(81,60,41,.2);box-shadow:0 25px 75px rgba(65,47,32,.14)}
+
+/* ---------- мастхед ---------- */
+.sport-page .masthead{min-height:86px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;
+  gap:22px;padding:14px 44px 14px 62px;border-bottom:1px solid var(--line)}
+.sport-page .brand-col{display:flex;flex-direction:column;gap:7px}
+.sport-page .back-link{align-self:flex-start;color:var(--ink-soft);font-size:11px;font-weight:800;
+  letter-spacing:.06em}
+.sport-page .back-link:hover{color:var(--terracotta-dark)}
+.sport-page .brand{display:flex;align-items:center;gap:12px;font-size:11px;font-weight:800;
+  letter-spacing:.14em;text-transform:uppercase}
+.sport-page .brand-mark{width:34px;height:34px;display:grid;place-items:center;color:var(--paper-light);
+  background:var(--ink);border-radius:50%;font:italic 700 18px var(--serif)}
+.sport-page .mainnav{display:flex;gap:4px}
+.sport-page .mainnav button{padding:9px 14px;color:var(--ink-soft);background:transparent;border:0;
+  cursor:pointer;font-size:13px;font-weight:700}
+.sport-page .mainnav button:hover{color:var(--terracotta-dark)}
+.sport-page .mainnav button.on{color:var(--paper-light);background:var(--ink)}
+.sport-page .edition{justify-self:end;color:var(--ink-soft);font-size:10px;font-weight:800;
+  letter-spacing:.14em;text-align:right;text-transform:uppercase}
+.sport-page .edition strong{display:block;margin-top:4px;color:var(--ink);font:italic 400 15px var(--serif);
+  letter-spacing:0;text-transform:none}
+
+/* ---------- общи ---------- */
+.sport-page .eyebrow{margin:0 0 11px;color:var(--terracotta-dark);font-size:11px;font-weight:850;
+  letter-spacing:.16em;text-transform:uppercase}
+.sport-page h1{margin:0;font:400 clamp(36px,5vw,62px)/1.02 var(--serif);letter-spacing:-.03em}
+.sport-page h2{margin:0;font:400 clamp(27px,3vw,40px)/1.08 var(--serif);letter-spacing:-.025em}
+.sport-page .view[hidden]{display:none}
+
+/* ---------- hero ---------- */
+.sport-page .hero{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:50px;
+  padding:60px 64px 46px;border-bottom:1px solid var(--line)}
+.sport-page .intro{max-width:640px;margin:14px 0 0;color:var(--ink-soft);font:400 17px/1.55 var(--serif)}
+.sport-page .overall{margin-top:26px;max-width:520px}
+.sport-page .progress-label{display:flex;justify-content:space-between;color:var(--ink-soft);font-size:11px;
+  font-weight:850;letter-spacing:.11em;text-transform:uppercase}
+.sport-page .progress-label strong{color:var(--terracotta-dark)}
+.sport-page .track{height:7px;margin:8px 0 6px;overflow:hidden;background:rgba(24,50,74,.11);border-radius:99px}
+.sport-page .track i{display:block;height:100%;background:var(--terracotta);transition:width .35s ease}
+.sport-page .track.sage i{background:var(--sage)}
+.sport-page .overall p{margin:8px 0 0;color:var(--ink-soft);font-size:12px}
+.sport-page .hero-note{align-self:end;display:flex;align-items:end;gap:18px;padding:24px;
+  color:var(--paper-light);background:var(--ink);box-shadow:7px 7px 0 var(--paper-deep)}
+.sport-page .note-number{color:var(--terracotta);font:400 68px/.8 var(--serif)}
+.sport-page .hero-note p{margin:0 0 5px;color:#c8d2d9;font-size:9px;font-weight:800;
+  letter-spacing:.15em;text-transform:uppercase}
+.sport-page .hero-note strong{display:block;font:400 20px/1.2 var(--serif)}
+.sport-page .hero-note span{display:block;margin-top:7px;color:#c8d2d9;font-size:12px}
+
+/* ---------- днес ---------- */
+.sport-page .today-layout{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(370px,.8fr)}
+.sport-page .daily-plan{padding:48px 52px 54px 64px;border-right:1px solid var(--line)}
+.sport-page .side{padding:48px 46px;background:rgba(251,247,239,.45)}
+.sport-page .section-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:20px}
+.sport-page .effort-badge{padding:8px 11px;color:var(--terracotta-dark);background:rgba(189,97,73,.09);
+  font-size:11px;font-weight:850;letter-spacing:.08em;white-space:nowrap;text-transform:uppercase}
+
+.sport-page .session-list{border-top:2px solid var(--ink)}
+.sport-page .session-card{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:14px;align-items:center;
+  padding:19px 4px;border-bottom:1px solid var(--line);transition:opacity .2s ease}
+.sport-page .session-card.done{opacity:.62}
+.sport-page .session-card.done h3{text-decoration:line-through}
+.sport-page .session-number{color:var(--terracotta-dark);font:italic 400 18px var(--serif)}
+.sport-page .session-copy h3{margin:0;font:600 19px/1.25 var(--serif)}
+.sport-page .session-copy p{margin:5px 0 0;color:var(--ink-soft);font-size:12px;line-height:1.45}
+.sport-page .logged{display:inline-block;margin-top:6px;padding:4px 8px;color:var(--sage-dark);
+  background:rgba(113,133,111,.15);font-size:11px;font-weight:800}
+.sport-page .duration{padding:7px 9px;color:var(--terracotta-dark);background:rgba(189,97,73,.09);
+  font-size:11px;font-weight:800;white-space:nowrap}
+.sport-page .session-actions{grid-column:2/-1;display:flex;flex-wrap:wrap;gap:9px}
+.sport-page .btn{min-height:38px;padding:0 14px;color:var(--ink);background:transparent;
+  border:1px solid var(--line);cursor:pointer;font-size:12px;font-weight:800}
+.sport-page .btn:hover{background:rgba(255,255,255,.5);border-color:var(--ink)}
+.sport-page .btn.dark{color:var(--paper-light);background:var(--ink);border-color:var(--ink)}
+.sport-page .btn.dark:hover{background:#22415e}
+.sport-page .session-card.done .btn.dark{background:var(--sage);border-color:var(--sage)}
+.sport-page .btn.ghost-light{color:var(--paper-light);border-color:rgba(255,255,255,.28);background:transparent}
+.sport-page .btn.ghost-light:hover{background:rgba(255,255,255,.1)}
+.sport-page .empty-day{padding:26px 0;color:var(--ink-soft);font:italic 400 16px var(--serif)}
+
+/* ---------- календар ---------- */
+.sport-page .cycle-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.sport-page .cycle-nav strong{font:600 15px var(--serif)}
+.sport-page .cycle-nav button{width:32px;height:32px;color:var(--ink);background:transparent;
+  border:1px solid var(--line);cursor:pointer;font-size:14px;font-weight:800}
+.sport-page .cycle-nav button:disabled{opacity:.3;cursor:default}
+.sport-page .week-strip{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:22px}
+.sport-page .week-day{min-width:0;padding:10px 3px 8px;color:var(--ink-soft);background:rgba(255,255,255,.35);
+  border:1px solid var(--line);cursor:pointer;transition:transform .18s ease}
+.sport-page .week-day:hover{transform:translateY(-2px);border-color:var(--ink)}
+.sport-page .week-day span,.sport-page .week-day strong,.sport-page .week-day i{display:block}
+.sport-page .week-day span{font-size:9px;font-weight:800;text-transform:uppercase}
+.sport-page .week-day strong{margin:6px 0;color:var(--ink);font:400 20px var(--serif)}
+.sport-page .week-day i{font-style:normal;font-size:9px}
+.sport-page .week-day.active{color:var(--paper-light);background:var(--ink);border-color:var(--ink)}
+.sport-page .week-day.active strong{color:#fff}
+.sport-page .month-card{padding:22px;background:var(--paper-light);border:1px solid var(--line);
+  box-shadow:6px 6px 0 var(--paper-deep)}
+.sport-page .month-card-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:15px}
+.sport-page .month-card h3{margin:0;font:600 18px var(--serif)}
+.sport-page .month-card-head span{color:var(--ink-soft);font-size:10px;font-weight:800;
+  letter-spacing:.1em;text-transform:uppercase}
+.sport-page .month-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.sport-page .month-grid b{color:var(--ink-soft);font-size:9px;letter-spacing:.08em;text-transform:uppercase}
+.sport-page .date-button{aspect-ratio:1;display:grid;place-items:center;color:var(--ink-soft);
+  background:transparent;border:1px solid transparent;border-radius:50%;cursor:pointer;font:400 13px var(--serif)}
+.sport-page .date-button.blank{cursor:default;opacity:0}
+.sport-page .date-button:hover:not(.blank){border-color:var(--ink)}
+.sport-page .date-button.partial{border-color:var(--sage);color:var(--sage-dark)}
+.sport-page .date-button.complete{color:#fff;background:var(--sage)}
+.sport-page .date-button.rest{color:var(--ink-soft);background:rgba(24,50,74,.06)}
+.sport-page .date-button.future{opacity:.4}
+.sport-page .date-button.selected{color:#fff;background:var(--terracotta);
+  box-shadow:0 0 0 3px var(--paper-light),0 0 0 4px var(--terracotta)}
+.sport-page .rule-quote{position:relative;margin:26px 0 0;padding:22px 24px 22px 52px;
+  color:var(--paper-light);background:var(--ink)}
+.sport-page .rule-quote::before{content:"“";position:absolute;left:17px;top:14px;color:var(--terracotta);
+  font:700 52px/.8 var(--serif)}
+.sport-page .rule-quote small{color:#c8d2d9;font-size:9px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.sport-page .rule-quote p{margin:7px 0 0;font:italic 400 18px/1.35 var(--serif)}
+.sport-page .restart{margin-top:14px;width:100%}
+
+/* ---------- разгъната сесия ---------- */
+.sport-page .guide{padding:48px 64px;color:var(--paper-light);background:var(--ink)}
+.sport-page .guide .eyebrow{color:#e0927c}
+.sport-page .guide h2{color:var(--paper-light)}
+.sport-page .guide-head{display:flex;justify-content:space-between;align-items:start;gap:30px;margin-bottom:22px}
+.sport-page .prep-note{padding:15px 18px;margin-bottom:18px;color:var(--ink);background:var(--paper-deep);
+  font:400 14px/1.5 var(--serif)}
+.sport-page .steps{margin:0 0 24px;padding:0;list-style:none;border-top:1px solid rgba(255,255,255,.3)}
+.sport-page .steps li{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:15px;align-items:center;
+  padding:15px 0;border-bottom:1px solid rgba(255,255,255,.17)}
+.sport-page .steps li>span{color:#e0927c;font:italic 400 16px var(--serif)}
+.sport-page .steps strong{font:600 17px var(--serif)}
+.sport-page .steps p{margin:4px 0 0;color:#c8d2d9;font-size:12px;line-height:1.45}
+.sport-page .target{display:inline-block;margin-top:5px;color:#e9b5a7;font-size:11px;font-weight:800}
+.sport-page .fields{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.sport-page .fields input{width:64px;min-height:40px;padding:6px 8px;color:var(--ink);
+  background:var(--paper-light);border:1px solid rgba(255,255,255,.3);font-size:14px;font-weight:800;text-align:center}
+.sport-page .fields input::placeholder{color:#a9b3bb;font-weight:600}
+.sport-page .fields .unit{color:#c8d2d9;font-size:10px;font-weight:800}
+.sport-page .hint-last{display:block;margin-top:4px;color:#8fa3b3;font-size:10px;font-weight:700;text-align:right}
+.sport-page .note-field{width:100%;min-height:70px;padding:12px;margin-bottom:18px;color:var(--ink);
+  background:var(--paper-light);border:1px solid rgba(255,255,255,.3);font-size:13px;resize:vertical}
+.sport-page .primary{min-height:52px;padding:0 24px;color:#fff;background:var(--terracotta);border:0;
+  box-shadow:5px 5px 0 var(--terracotta-dark);cursor:pointer;font-size:12px;font-weight:850;letter-spacing:.06em}
+.sport-page .primary:hover{background:#a8503d}
+
+/* ---------- напредък ---------- */
+.sport-page .section{padding:60px 64px;border-top:1px solid var(--line)}
+.sport-page .section-intro{max-width:760px;margin-bottom:28px}
+.sport-page .section-intro>p:last-child{margin:12px 0 0;color:var(--ink-soft);font:400 16px/1.5 var(--serif)}
+.sport-page .week-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.sport-page .week-card{min-width:0;padding:20px;background:rgba(251,247,239,.55);border:1px solid var(--line)}
+.sport-page .week-card.current{background:var(--paper-light);border-color:var(--terracotta);
+  box-shadow:5px 5px 0 var(--paper-deep)}
+.sport-page .week-card header{display:flex;justify-content:space-between;margin-bottom:9px;color:var(--ink-soft);
+  font-size:10px;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+.sport-page .week-card header strong{color:var(--terracotta-dark)}
+.sport-page .week-card h3{margin:0 0 8px;font:600 16px var(--serif)}
+.sport-page .week-card dl{margin:12px 0 0;font-size:12px;line-height:1.5}
+.sport-page .week-card dt{color:var(--ink-soft);font-size:9px;font-weight:850;letter-spacing:.1em;
+  text-transform:uppercase;margin-top:9px}
+.sport-page .week-card dd{margin:2px 0 0}
+
+.sport-page .chart-block{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;margin-top:34px}
+.sport-page .panel{padding:22px;background:var(--paper-light);border:1px solid var(--line)}
+.sport-page .panel h3{margin:0 0 4px;font:600 18px var(--serif)}
+.sport-page .panel>p{margin:0 0 14px;color:var(--ink-soft);font-size:12px}
+.sport-page select{width:100%;min-height:42px;padding:0 10px;margin-bottom:16px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);font-size:13px;font-weight:700}
+.sport-page .chart{display:flex;align-items:flex-end;gap:5px;height:150px;padding-top:8px;
+  border-bottom:1px solid var(--line)}
+.sport-page .chart .col{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:flex-end;
+  align-items:center;height:100%}
+.sport-page .chart .col i{display:block;width:100%;background:var(--terracotta);opacity:.88;transition:height .3s ease}
+.sport-page .chart .col b{margin-bottom:4px;color:var(--terracotta-dark);font-size:10px;font-weight:800}
+.sport-page .chart-foot{display:flex;justify-content:space-between;margin-top:9px;color:var(--ink-soft);
+  font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.sport-page .empty{padding:30px 0;color:var(--ink-soft);font:italic 400 15px var(--serif);text-align:center}
+
+.sport-page .measure-form{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.sport-page .measure-form label{display:block;color:var(--ink-soft);font-size:10px;font-weight:850;
+  letter-spacing:.1em;text-transform:uppercase}
+.sport-page .measure-form label span{color:var(--terracotta-dark)}
+.sport-page .measure-form input{width:100%;min-height:44px;margin-top:6px;padding:0 11px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);font:400 17px var(--serif)}
+.sport-page .measure-hist{margin-top:16px;font-size:12px}
+.sport-page .measure-hist div{display:flex;justify-content:space-between;padding:7px 0;
+  border-bottom:1px solid var(--line)}
+.sport-page .measure-hist div:last-child{border-bottom:0}
+.sport-page .measure-hist span{color:var(--ink-soft);font-weight:800}
+
+/* ---------- редактор ---------- */
+.sport-page .editor-grid{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;margin-top:24px}
+.sport-page .editor-tabs{display:flex;flex-direction:column;gap:6px}
+.sport-page .editor-tabs button{padding:12px 14px;text-align:left;color:var(--ink);background:transparent;
+  border:1px solid var(--line);cursor:pointer;font-size:13px;font-weight:700}
+.sport-page .editor-tabs button.on{color:var(--paper-light);background:var(--ink);border-color:var(--ink)}
+.sport-page .editor-tabs .sep{margin:8px 0 2px;color:var(--ink-soft);font-size:9px;font-weight:850;
+  letter-spacing:.12em;text-transform:uppercase}
+.sport-page .editor-tabs button.add{color:var(--terracotta-dark);border-style:dashed}
+.sport-page .ex-row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1.2fr) 140px 40px;gap:9px;
+  align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.sport-page .ex-row input,.sport-page .ex-row select{min-height:40px;padding:0 10px;color:var(--ink);
+  background:var(--paper-light);border:1px solid var(--line);font-size:13px;margin:0;width:100%}
+.sport-page .ex-row .del,.sport-page .chip button{color:var(--terracotta-dark);background:transparent;
+  border:1px solid var(--line);cursor:pointer;font-weight:800}
+.sport-page .ex-row .del{width:36px;height:36px;font-size:15px}
+.sport-page .ex-head{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1.2fr) 140px 40px;gap:9px;
+  padding-bottom:8px;border-bottom:2px solid var(--ink);color:var(--ink-soft);font-size:9px;
+  font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+.sport-page .block-meta{display:grid;grid-template-columns:minmax(0,2fr) 150px;gap:10px;margin-bottom:16px}
+.sport-page .block-meta input{min-height:44px;padding:0 12px;width:100%;color:var(--ink);
+  background:var(--paper-light);border:1px solid var(--line)}
+.sport-page .block-meta input:first-child{font:600 16px var(--serif)}
+.sport-page .block-meta input:last-child{font-size:13px}
+
+/* дни от седмицата с чипове */
+.sport-page .day-row{display:grid;grid-template-columns:130px minmax(0,1fr);gap:14px;align-items:start;
+  padding:14px 0;border-bottom:1px solid var(--line)}
+.sport-page .day-row>strong{font:600 15px var(--serif);padding-top:7px}
+.sport-page .day-row>strong small{display:block;color:var(--ink-soft);font:400 11px var(--sans)}
+.sport-page .chips{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.sport-page .chip{display:inline-flex;align-items:center;gap:7px;padding:7px 8px 7px 12px;
+  background:var(--paper-light);border:1px solid var(--line);font-size:12px;font-weight:700}
+.sport-page .chip button{width:22px;height:22px;line-height:1;font-size:13px;border-radius:50%}
+.sport-page .chip button:hover{background:rgba(189,97,73,.12)}
+.sport-page .chip .move{color:var(--ink-soft);border:0;width:16px;font-size:11px}
+.sport-page .chips select{width:auto;min-width:170px;min-height:36px;margin:0;font-size:12px;font-weight:700}
+.sport-page .rest-note{color:var(--ink-soft);font:italic 400 13px var(--serif)}
+.sport-page .editor-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.sport-page .saved-flash{padding:9px 13px;color:var(--sage-dark);background:rgba(113,133,111,.15);
+  font-size:12px;font-weight:800}
+.sport-page .danger{color:var(--terracotta-dark);border-color:rgba(189,97,73,.4)}
+
+/* ---------- обобщение по седмици ---------- */
+.sport-page .period-nav{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:22px;
+  padding-bottom:18px;border-bottom:2px solid var(--ink)}
+.sport-page .period-title{flex:1;min-width:180px;text-align:center}
+.sport-page .period-title strong{display:block;font:400 26px/1.1 var(--serif)}
+.sport-page .period-title span{display:block;margin-top:4px;color:var(--ink-soft);font-size:11px;
+  font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.sport-page .period-nav .btn:disabled{opacity:.35;cursor:default}
+.sport-page .period-nav .btn:disabled:hover{background:transparent;border-color:var(--line)}
+
+.sport-page .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:22px}
+.sport-page .stat{padding:20px;background:var(--paper-light);border:1px solid var(--line);
+  box-shadow:5px 5px 0 var(--paper-deep)}
+.sport-page .stat-label{display:block;color:var(--ink-soft);font-size:10px;font-weight:850;
+  letter-spacing:.11em;text-transform:uppercase}
+.sport-page .stat-value{display:block;margin:8px 0 4px;color:var(--terracotta-dark);
+  font:400 40px/1 var(--serif)}
+.sport-page .stat-value small{color:var(--ink-soft);font-size:19px}
+.sport-page .stat p{margin:0 0 10px;color:var(--ink-soft);font-size:12px}
+.sport-page .delta{display:inline-block;padding:4px 9px;font-style:normal;font-size:11px;font-weight:800}
+.sport-page .delta.up{color:var(--sage-dark);background:rgba(113,133,111,.16)}
+.sport-page .delta.down{color:var(--terracotta-dark);background:rgba(189,97,73,.11)}
+.sport-page .delta.flat{color:var(--ink-soft);background:rgba(24,50,74,.06)}
+
+.sport-page .summary-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+.sport-page .breakdown-row{padding:11px 0;border-bottom:1px solid var(--line)}
+.sport-page .breakdown-row:last-child{border-bottom:0}
+.sport-page .breakdown-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  margin-bottom:7px}
+.sport-page .breakdown-head strong{font:600 14px var(--serif)}
+.sport-page .breakdown-head span{color:var(--ink-soft);font-size:11px;font-weight:800;white-space:nowrap}
+.sport-page .breakdown-head i{font-style:normal;font-weight:600;opacity:.75}
+
+.sport-page .measure-delta div{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;
+  align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line)}
+.sport-page .measure-delta div:last-child{border-bottom:0}
+.sport-page .measure-delta span{color:var(--ink-soft);font-size:12px;font-weight:700}
+.sport-page .measure-delta strong{font:400 19px var(--serif)}
+
+.sport-page .panel.history{margin-top:20px}
+.sport-page .history-rows{display:flex;flex-direction:column}
+.sport-page .history-row{display:grid;grid-template-columns:minmax(140px,1.1fr) minmax(0,1.4fr) 48px minmax(110px,auto);
+  gap:14px;align-items:center;width:100%;padding:12px 8px;text-align:left;background:transparent;
+  border:0;border-bottom:1px solid var(--line);cursor:pointer;transition:background .16s ease}
+.sport-page .history-row:last-child{border-bottom:0}
+.sport-page .history-row:hover{background:rgba(255,255,255,.55)}
+.sport-page .history-row.active{background:var(--paper);box-shadow:inset 3px 0 0 var(--terracotta)}
+.sport-page .hr-week{font:600 13px var(--serif)}
+.sport-page .hr-week i{color:var(--terracotta-dark);font-style:normal;font-size:11px;font-weight:800}
+.sport-page .hr-num{color:var(--terracotta-dark);font-size:13px;font-weight:850;text-align:right}
+.sport-page .hr-meta{color:var(--ink-soft);font-size:11px;font-weight:700;text-align:right}
+
+/* ---------- изключен спорт ---------- */
+.sport-page .off-screen{max-width:640px;padding:78px 64px 84px}
+.sport-page .off-screen .intro{margin:16px 0 0}
+.sport-page .off-list{margin:26px 0 32px;padding:0;list-style:none;border-top:2px solid var(--ink)}
+.sport-page .off-list li{position:relative;padding:14px 0 14px 30px;border-bottom:1px solid var(--line);
+  font-size:14px;line-height:1.5}
+.sport-page .off-list li::before{content:"—";position:absolute;left:0;color:var(--terracotta);font-weight:800}
+.sport-page .off-note{margin:18px 0 0;color:var(--ink-soft);font:italic 400 14px/1.5 var(--serif)}
+
+/* ---------- правила ---------- */
+.sport-page .rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-top:24px}
+.sport-page .rules-grid article{padding:22px;background:var(--paper-light);border:1px solid var(--line)}
+.sport-page .rules-grid span{color:var(--terracotta);font:italic 400 22px var(--serif)}
+.sport-page .rules-grid h3{margin:8px 0 7px;font:600 17px var(--serif)}
+.sport-page .rules-grid p{margin:0;color:var(--ink-soft);font-size:13px;line-height:1.55}
+.sport-page .safety{margin-top:20px;padding:20px 24px;color:var(--paper-light);background:var(--terracotta-dark)}
+.sport-page .safety strong{display:block;margin-bottom:7px;font:600 17px var(--serif)}
+.sport-page .safety p{margin:0;font-size:13px;line-height:1.6}
+
+.sport-page footer.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding:24px 64px;border-top:1px solid var(--line);color:var(--ink-soft);font-size:11px}
+
+@media (max-width:1000px){
+  .sport-page .today-layout{grid-template-columns:minmax(0,1fr)}
+  .sport-page .daily-plan{border-right:0;border-bottom:1px solid var(--line)}
+  .sport-page .hero{grid-template-columns:minmax(0,1fr);gap:26px}
+  .sport-page .week-cards{grid-template-columns:repeat(2,1fr)}
+  .sport-page .chart-block,.sport-page .editor-grid,
+  .sport-page .summary-grid{grid-template-columns:minmax(0,1fr)}
+  .sport-page .editor-tabs{flex-direction:row;flex-wrap:wrap}
+  .sport-page .editor-tabs .sep{width:100%}
+}
+@media (max-width:720px){
+  .sport-page .shell{width:calc(100% - 14px);margin:8px auto;
+    background:repeating-linear-gradient(0deg,rgba(24,50,74,.02) 0 1px,transparent 1px 32px),var(--paper)}
+  .sport-page .masthead{grid-template-columns:1fr;gap:12px;padding:14px 20px}
+  .sport-page .mainnav{flex-wrap:wrap}
+  .sport-page .edition{justify-self:start;text-align:left}
+  .sport-page .hero,.sport-page .daily-plan,.sport-page .side,
+  .sport-page .guide,.sport-page .section{padding:30px 20px}
+  .sport-page footer.foot{padding:20px}
+  .sport-page .week-cards,.sport-page .measure-form{grid-template-columns:minmax(0,1fr)}
+  .sport-page .stat-row{grid-template-columns:minmax(0,1fr);gap:10px}
+  .sport-page .stat{box-shadow:none}
+  .sport-page .period-title{order:-1;flex-basis:100%;text-align:left}
+  .sport-page .period-nav .btn{flex:1}
+  .sport-page .history-row{grid-template-columns:minmax(0,1fr) 48px;row-gap:6px}
+  .sport-page .hr-bar{grid-column:1/-1;order:3}
+  .sport-page .hr-meta{grid-column:1/-1;order:4;text-align:left}
+  .sport-page .steps li{grid-template-columns:32px minmax(0,1fr);row-gap:10px}
+  .sport-page .fields{grid-column:1/-1;justify-content:flex-start}
+  .sport-page .hint-last{text-align:left}
+  .sport-page .ex-row,.sport-page .ex-head,.sport-page .block-meta{grid-template-columns:minmax(0,1fr);gap:6px}
+  .sport-page .ex-head{display:none}
+  .sport-page .day-row{grid-template-columns:minmax(0,1fr);gap:8px}
+}

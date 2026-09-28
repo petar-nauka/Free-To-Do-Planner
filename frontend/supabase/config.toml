@@ -1,0 +1,19 @@
+project_id = "free-to-do-planner"
+
+[functions.n8n-webhook]
+verify_jwt = false
+
+[functions.send-test-email]
+verify_jwt = false
+
+[functions.process-notifications]
+verify_jwt = false
+
+[functions.process-reminders]
+verify_jwt = false
+
+[functions.update-user-role]
+verify_jwt = false
+
+[functions.delete-user]
+verify_jwt = false
