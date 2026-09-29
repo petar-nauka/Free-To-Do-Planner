@@ -112,18 +112,15 @@ export function TaskDetailDialog({
     onOpenChange(false);
   };
 
+  // Без onOpenChange(false): затварянето на задачата също е навигация (към таба
+  // „Задачи") и би изтрило току-що отворения адрес на бележката/таблицата.
+  // Диалогът се затваря сам, защото адресът вече не сочи към задачата.
   const handleOpenLinkedNote = () => {
-    if (task.note_id && onOpenNote) {
-      onOpenNote(task.note_id);
-      onOpenChange(false);
-    }
+    if (task.note_id && onOpenNote) onOpenNote(task.note_id);
   };
 
   const handleOpenLinkedSpreadsheet = () => {
-    if (task.spreadsheet_id && onOpenSpreadsheet) {
-      onOpenSpreadsheet(task.spreadsheet_id);
-      onOpenChange(false);
-    }
+    if (task.spreadsheet_id && onOpenSpreadsheet) onOpenSpreadsheet(task.spreadsheet_id);
   };
 
   const handleShareLink = async () => {
