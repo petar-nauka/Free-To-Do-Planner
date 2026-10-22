@@ -16,6 +16,7 @@ import { useTasks, Task, TaskStatus, TaskPriority } from '@/hooks/useTasks';
 import { TaskCard } from '@/components/tasks/TaskCard';
 import { CreateTaskDialog } from '@/components/tasks/CreateTaskDialog';
 import { ArchiveDialog } from '@/components/tasks/ArchiveDialog';
+import { TASK_COLORS, TaskColor } from '@/lib/taskColors';
 import { cn } from '@/lib/utils';
 import { useTranslation } from 'react-i18next';
 
@@ -85,6 +86,7 @@ export function TasksSection({ projectId, openTaskId, onOpenTask, onOpenNote, on
   const { tasks, isLoading, reorderTasks } = useTasks(projectId);
   const [searchQuery, setSearchQuery] = useState('');
   const [priorityFilter, setPriorityFilter] = useState<TaskPriority[]>([]);
+  const [colorFilter, setColorFilter] = useState<TaskColor[]>([]);
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [archiveDialogOpen, setArchiveDialogOpen] = useState(false);
   const [createStatus, setCreateStatus] = useState<TaskStatus>('new');
@@ -103,7 +105,8 @@ export function TasksSection({ projectId, openTaskId, onOpenTask, onOpenNote, on
   const filteredTasks = activeTasks.filter(task => {
     const matchesSearch = task.title.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesPriority = priorityFilter.length === 0 || priorityFilter.includes(task.priority);
-    return matchesSearch && matchesPriority;
+    const matchesColor = colorFilter.length === 0 || colorFilter.includes(task.color as TaskColor);
+    return matchesSearch && matchesPriority && matchesColor;
   });
 
   const getTasksByStatus = (status: TaskStatus) => 
@@ -177,6 +180,14 @@ export function TasksSection({ projectId, openTaskId, onOpenTask, onOpenNote, on
       prev.includes(priority) 
         ? prev.filter(p => p !== priority)
         : [...prev, priority]
+    );
+  };
+
+  const toggleColorFilter = (color: TaskColor) => {
+    setColorFilter(prev =>
+      prev.includes(color)
+        ? prev.filter(c => c !== color)
+        : [...prev, color]
     );
   };
 
@@ -332,9 +343,9 @@ export function TasksSection({ projectId, openTaskId, onOpenTask, onOpenNote, on
             <Button variant="outline" className="rounded-xl">
               <Filter className="w-4 h-4 mr-2" />
               {t('common.filter')}
-              {priorityFilter.length > 0 && (
+              {priorityFilter.length + colorFilter.length > 0 && (
                 <span className="ml-2 w-5 h-5 rounded-full bg-primary text-primary-foreground text-xs flex items-center justify-center">
-                  {priorityFilter.length}
+                  {priorityFilter.length + colorFilter.length}
                 </span>
               )}
             </Button>
@@ -366,6 +377,19 @@ export function TasksSection({ projectId, openTaskId, onOpenTask, onOpenNote, on
               <span className="w-2 h-2 rounded-full bg-priority-low mr-2" />
               {t('tasks.priorityLow')}
             </DropdownMenuCheckboxItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuLabel>{t('tasks.color', 'Цвят')}</DropdownMenuLabel>
+            {TASK_COLORS.map(color => (
+              <DropdownMenuCheckboxItem
+                key={color.key}
+                checked={colorFilter.includes(color.key)}
+                onCheckedChange={() => toggleColorFilter(color.key)}
+                className="rounded-lg"
+              >
+                <span className={cn('w-3 h-3 rounded-full border border-border mr-2', color.className)} />
+                {color.label}
+              </DropdownMenuCheckboxItem>
+            ))}
           </DropdownMenuContent>
         </DropdownMenu>
 

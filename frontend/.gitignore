@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Копират се от @excalidraw/excalidraw при всеки dev/build (виж vite.config.ts)
+public/excalidraw/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

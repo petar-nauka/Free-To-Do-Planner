@@ -597,6 +597,7 @@ export type Database = {
       tasks: {
         Row: {
           archived_at: string | null
+          color: string | null
           created_at: string
           description: string | null
           due_date: string | null
@@ -613,6 +614,7 @@ export type Database = {
         }
         Insert: {
           archived_at?: string | null
+          color?: string | null
           created_at?: string
           description?: string | null
           due_date?: string | null
@@ -629,6 +631,7 @@ export type Database = {
         }
         Update: {
           archived_at?: string | null
+          color?: string | null
           created_at?: string
           description?: string | null
           due_date?: string | null
@@ -777,6 +780,44 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      whiteboards: {
+        Row: {
+          created_at: string
+          data: Json
+          id: string
+          name: string
+          project_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          data?: Json
+          id?: string
+          name?: string
+          project_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          data?: Json
+          id?: string
+          name?: string
+          project_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "whiteboards_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {

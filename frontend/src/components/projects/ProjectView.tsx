@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { FileText, CheckSquare, Bell, RefreshCw, Table2 } from 'lucide-react';
+import { FileText, CheckSquare, Bell, RefreshCw, Table2, PenTool } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import {
   AlertDialog,
@@ -22,6 +22,7 @@ import { TasksSection } from '@/components/tasks/TasksSection';
 import { RemindersSection } from '@/components/reminders/RemindersSection';
 import { RecurringSection } from '@/components/recurring/RecurringSection';
 import { SpreadsheetsSection } from '@/components/spreadsheets/SpreadsheetsSection';
+import { WhiteboardsSection } from '@/components/whiteboards/WhiteboardsSection';
 import { TodayPlanSection } from '@/components/todayplan/TodayPlanSection';
 import { EditProjectDialog } from '@/components/projects/EditProjectDialog';
 import { InviteMemberDialog } from '@/components/projects/InviteMemberDialog';
@@ -169,6 +170,13 @@ export function ProjectView({ project, activeTab, openItemId, onTabChange, onOpe
               <Table2 className="w-4 h-4 mr-2" />
               {t('spreadsheets.title', 'Таблици')}
             </TabsTrigger>
+            <TabsTrigger
+              value="boards"
+              className="rounded-lg data-[state=active]:bg-card data-[state=active]:shadow-soft"
+            >
+              <PenTool className="w-4 h-4 mr-2" />
+              {t('whiteboards.title', 'Дъски')}
+            </TabsTrigger>
             <TabsTrigger 
               value="reminders"
               className="rounded-lg data-[state=active]:bg-card data-[state=active]:shadow-soft"
@@ -209,6 +217,14 @@ export function ProjectView({ project, activeTab, openItemId, onTabChange, onOpe
             projectId={project.id}
             openSheetId={activeTab === 'sheets' ? openItemId : null}
             onOpenSheet={(sheet) => onOpenItem('sheets', sheet)}
+          />
+        </TabsContent>
+
+        <TabsContent value="boards" className="flex-1 mt-0 p-6 pb-20 md:pb-6 overflow-hidden">
+          <WhiteboardsSection
+            projectId={project.id}
+            openBoardId={activeTab === 'boards' ? openItemId : null}
+            onOpenBoard={(board) => onOpenItem('boards', board)}
           />
         </TabsContent>
 

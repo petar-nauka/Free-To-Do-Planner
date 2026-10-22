@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   entitySegment,
+  isProjectTab,
   legacyPathToNew,
   notePath,
   parseEntityId,
@@ -143,6 +144,11 @@ describe('строителите на пътища', () => {
 
   it('таблицата седи под таба sheets, не spreadsheets', () => {
     expect(sheetPath(project, { id: TASK_ID, name: 'Бюджет' })).toContain('/sheets/byudzhet-');
+  });
+
+  it('дъските са истински таб — адресът /boards/<дъска> не пада обратно към задачите', () => {
+    expect(isProjectTab('boards')).toBe(true);
+    expect(projectTabPath(project, 'boards')).toBe('/p/bg-nauka-a1b2c3d45e6f4890abcdef1234567890/boards');
   });
 
   it('работи и когато имената липсват', () => {

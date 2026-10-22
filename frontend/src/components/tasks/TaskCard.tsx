@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Calendar, Tag, MoreVertical, Trash2, Edit, Archive, FileText, Table2, FolderInput, MessageSquare, Play, Square, Clock } from 'lucide-react';
+import { Calendar, Tag, MoreVertical, Trash2, Edit, Archive, FileText, Table2, FolderInput, MessageSquare, Play, Square, Clock, Palette, Check, Ban } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -9,6 +9,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuSubContent,
 } from '@/components/ui/dropdown-menu';
 import {
   Tooltip,
@@ -24,6 +27,7 @@ import { EditTaskDialog } from '@/components/tasks/EditTaskDialog';
 import { TaskDetailDialog } from '@/components/tasks/TaskDetailDialog';
 import { LinkifiedText } from '@/components/common/LinkifiedText';
 import { MoveTaskDialog } from '@/components/tasks/MoveTaskDialog';
+import { TASK_COLORS, taskColorClass } from '@/lib/taskColors';
 import { cn } from '@/lib/utils';
 import { format } from 'date-fns';
 import { useTranslation } from 'react-i18next';
@@ -59,7 +63,7 @@ function ElapsedTimer({ startedAt }: { startedAt: string }) {
 
 export function TaskCard({ task, isDragging, isDetailOpen = false, onDetailOpenChange, onOpenNote, onOpenSpreadsheet }: TaskCardProps) {
   const { t } = useTranslation();
-  const { deleteTask } = useTasks(task.project_id);
+  const { deleteTask, updateTask } = useTasks(task.project_id);
   const { archiveTask } = useArchivedTasks(task.project_id);
   const { comments } = useTaskComments(task.id);
   const { activeTimer, startTimer, stopTimer } = useTimeTracking();
@@ -94,7 +98,8 @@ export function TaskCard({ task, isDragging, isDetailOpen = false, onDetailOpenC
           'p-3 rounded-xl border border-border bg-card transition-all cursor-grab active:cursor-grabbing',
           isDragging && 'shadow-playful rotate-2 scale-105',
           (hasLinkedNote || hasLinkedSpreadsheet) && 'border-primary/30 bg-primary/5 cursor-pointer',
-          isActive && 'border-emerald-400/60 ring-1 ring-emerald-400/40'
+          isActive && 'border-emerald-400/60 ring-1 ring-emerald-400/40',
+          taskColorClass(task.color)
         )}
         onClick={handleCardClick}
       >
@@ -185,6 +190,33 @@ export function TaskCard({ task, isDragging, isDetailOpen = false, onDetailOpenC
                 <DropdownMenuItem className="rounded-lg cursor-pointer" onClick={() => setMoveOpen(true)}>
                   <FolderInput className="mr-2 h-4 w-4" />Прехвърли
                 </DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger className="rounded-lg cursor-pointer">
+                    <Palette className="mr-2 h-4 w-4" />{t('tasks.color', 'Цвят')}
+                  </DropdownMenuSubTrigger>
+                  <DropdownMenuSubContent className="rounded-xl grid grid-cols-4 gap-1.5 p-2">
+                    {[{ key: null, label: t('tasks.noColor', 'Без цвят'), className: 'bg-card' }, ...TASK_COLORS].map((c) => {
+                      const selected = (task.color ?? null) === c.key;
+                      return (
+                        <DropdownMenuItem
+                          key={c.key ?? 'none'}
+                          title={c.label}
+                          aria-label={c.label}
+                          onClick={() => updateTask.mutate({ id: task.id, color: c.key })}
+                          className="p-0.5 rounded-full cursor-pointer"
+                        >
+                          <span className={cn(
+                            'w-7 h-7 rounded-full border border-border flex items-center justify-center',
+                            c.className,
+                            selected && 'ring-2 ring-primary'
+                          )}>
+                            {selected ? <Check className="h-3.5 w-3.5" /> : !c.key && <Ban className="h-3.5 w-3.5 text-muted-foreground" />}
+                          </span>
+                        </DropdownMenuItem>
+                      );
+                    })}
+                  </DropdownMenuSubContent>
+                </DropdownMenuSub>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="rounded-lg cursor-pointer text-destructive focus:text-destructive"

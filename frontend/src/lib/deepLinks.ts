@@ -23,7 +23,7 @@ const COMPACT_ID = /^[0-9a-f]{32}$/i;
 const DASHED_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 /** Табовете в проекта — имената им в адреса са и вътрешните стойности на `Tabs`. */
-export const PROJECT_TABS = ['tasks', 'notes', 'sheets', 'reminders', 'recurring'] as const;
+export const PROJECT_TABS = ['tasks', 'notes', 'sheets', 'boards', 'reminders', 'recurring'] as const;
 export type ProjectTab = (typeof PROJECT_TABS)[number];
 
 export function isProjectTab(value?: string | null): value is ProjectTab {

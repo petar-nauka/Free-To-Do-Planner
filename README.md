@@ -12,10 +12,11 @@ You can run it on your own computer or server, and all data stays in **your own*
 
 ## Features
 
-- Projects with Kanban boards: drag & drop, tags, comments, file attachments
+- Projects with Kanban boards: drag & drop, tags, comments, file attachments, Google Keep-style task colors with a color filter
 - Priority tasks, "Plan for today", recurring tasks, reminders, calendar
 - Notes with version history and a trash bin
 - Spreadsheets with formulas
+- Whiteboards for drawing and sketching (Excalidraw)
 - Time tracking, global search, permanent links to projects, notes and tasks
 - Shared projects: invite other users by e-mail
 - E-mail reminders, overdue-task alerts and a weekly report (optional backend)
@@ -47,7 +48,7 @@ Only static files are served.
 
 1. Create a **new, empty** Supabase project.
 2. Open **SQL Editor**, paste the whole of [`database/install.sql`](database/install.sql) and click **Run**.
-   This creates all 23 tables, the security policies, functions, triggers and the `attachments` storage bucket.
+   This creates all 24 tables, the security policies, functions, triggers and the `attachments` storage bucket.
    Run it **only once**, on an empty project.
 3. **Authentication → URL Configuration:** set **Site URL** to the address of the app:
    `http://localhost:3000` locally, or `https://your-domain` on a server.

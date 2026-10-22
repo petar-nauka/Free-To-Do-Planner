@@ -47,6 +47,7 @@ const BackupTaskSchema = z.object({
   created_at: z.string().optional(),
   updated_at: z.string().optional(),
   archived_at: z.string().nullable().optional(),
+  color: z.string().max(50).nullable().optional(),
   tags: z.array(BackupTagSchema).optional(),
   task_tags: z.array(BackupTagSchema).optional(),
 });
@@ -180,6 +181,7 @@ export async function importFromJSON(
           priority: task.priority,
           due_date: task.due_date,
           position: task.position,
+          color: task.color ?? null,
         })
         .select()
         .single();

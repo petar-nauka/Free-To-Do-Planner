@@ -77,6 +77,19 @@
     --highlight-gray: 220 14% 90%;
     --highlight-lime: 84 80% 85%;
 
+    /* Task background colors — палитрата на Google Keep (светъл режим: пастели) */
+    --task-red: 5 89% 82%;
+    --task-orange: 20 84% 71%;
+    --task-yellow: 54 100% 86%;
+    --task-green: 94 66% 90%;
+    --task-teal: 165 38% 79%;
+    --task-sky: 202 41% 88%;
+    --task-blue: 201 40% 77%;
+    --task-purple: 283 28% 80%;
+    --task-pink: 12 58% 92%;
+    --task-brown: 43 32% 87%;
+    --task-gray: 240 7% 94%;
+
     --chart-1: 262 83% 58%;
     --chart-2: 330 81% 60%;
     --chart-3: 174 72% 56%;
@@ -129,6 +142,19 @@
     --chart-3: 174 72% 56%;
     --chart-4: 217 91% 65%;
     --chart-5: 38 92% 55%;
+
+    /* Task background colors — тъмен режим: наситени тонове, както в Keep */
+    --task-red: 346 68% 28%;
+    --task-orange: 15 64% 25%;
+    --task-yellow: 35 95% 25%;
+    --task-green: 152 34% 23%;
+    --task-teal: 177 78% 22%;
+    --task-sky: 195 53% 31%;
+    --task-blue: 205 36% 25%;
+    --task-purple: 273 33% 27%;
+    --task-pink: 334 31% 32%;
+    --task-brown: 35 13% 26%;
+    --task-gray: 225 5% 15%;
   }
 }
 

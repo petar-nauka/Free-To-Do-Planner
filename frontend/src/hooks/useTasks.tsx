@@ -31,6 +31,8 @@ export interface Task {
   spreadsheet_id?: string | null;
   /** Кога е архивирана (= завършена). Колоната винаги е била в базата; типът я пропускаше. */
   archived_at?: string | null;
+  /** Ключ от `lib/taskColors.ts` или null = без цвят. */
+  color?: string | null;
   task_tags?: TaskTag[];
 }
 
