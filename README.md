@@ -21,7 +21,7 @@ You can run it on your own computer or server, and all data stays in **your own*
 - Shared projects: invite other users by e-mail
 - E-mail reminders, overdue-task alerts and a weekly report (optional backend)
 - Optional: voice notes with speech-to-text (Soniox), n8n integration, workout tracker
-- Mobile-friendly
+- Mobile-friendly and installable on the phone as an app (PWA)
 
 ## How it works
 

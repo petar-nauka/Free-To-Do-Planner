@@ -34,6 +34,18 @@
     <title>Free To-Do Planner</title>
     <meta name="description" content="Управление на проекти и задачи" />
 
+    <!-- Инсталиране на телефона като приложение (PWA) + иконки. iPhone чете
+         apple-* таговете и apple-touch-icon, Android/Chrome — manifest-а. -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="To Do" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
     <meta property="og:title" content="Free To-Do Planner" />
     <meta property="og:description" content="Self-hosted planner for projects, tasks, notes and spreadsheets" />
     <meta property="og:type" content="website" />
