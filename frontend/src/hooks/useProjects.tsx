@@ -14,6 +14,8 @@ export interface Project {
   created_at: string;
   updated_at: string;
   archived_at: string | null;
+  /** Седмичен имейл за непипани задачи в този проект (ключът е на собственика). */
+  stale_tasks_email?: boolean;
 }
 
 export function useProjects() {

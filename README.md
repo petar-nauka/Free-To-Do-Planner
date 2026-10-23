@@ -20,6 +20,7 @@ You can run it on your own computer or server, and all data stays in **your own*
 - Time tracking, global search, permanent links to projects, notes and tasks
 - Shared projects: invite other users by e-mail
 - E-mail reminders, overdue-task alerts and a weekly report (optional backend)
+- Weekly e-mail about tasks untouched for 30+ days, with a switch per user and per project
 - Optional: voice notes with speech-to-text (Soniox), n8n integration, workout tracker
 - Mobile-friendly and installable on the phone as an app (PWA)
 
@@ -150,6 +151,7 @@ Some features call Supabase Edge Functions from [`frontend/supabase/functions`](
 | `process-notifications` | e-mails to members of shared projects about new tasks and notes |
 | `ai-soniox-token` | voice notes |
 | `n8n-webhook` | the n8n integration (**Settings → „n8n Интеграция"**) |
+| `stale-tasks-digest` | the weekly e-mail about untouched tasks (schedule it — see below) |
 | `process-reminders`, `check-overdue-tasks` | the same job as the Python backend. **Not needed** if you run the backend |
 
 Deploy them to supabase.com with the Supabase CLI:
@@ -165,6 +167,20 @@ npx supabase secrets set N8N_WEBHOOK_SECRET=<random-string> N8N_ALLOWED_ORIGIN=h
 
 On supabase.com, `SUPABASE_URL`, `SUPABASE_ANON_KEY` and `SUPABASE_SERVICE_ROLE_KEY` are available to functions automatically.
 On self-hosted Supabase, copy the function folders into your Edge Functions volume, as described in the Supabase self-hosting docs.
+
+#### Weekly e-mail about untouched tasks (`stale-tasks-digest`)
+
+Every Monday each user gets one e-mail with their own tasks that nobody changed for 30+ days. Users can switch it off in
+**Settings**, and project owners per project in the project's edit dialog. The function runs only with the `service_role` key.
+Schedule it once a week, for example with cron on a self-hosted server:
+
+```sh
+0 8 * * 1  curl -s -X POST http://localhost:8000/functions/v1/stale-tasks-digest -H "Authorization: Bearer <service_role key>" -d "{}"
+```
+
+On supabase.com use **Integrations → Cron** with the same request. Send `{"dry_run": true}` to see who would get what without sending.
+It posts `{to, subject, html, from, fromName}` to `EMAIL_GATEWAY_URL` with the header `X-Api-Key: <EMAIL_GATEWAY_API_KEY>`,
+and adds links when the `app_url` row in `app_settings` holds your site address.
 
 ### Voice notes
 

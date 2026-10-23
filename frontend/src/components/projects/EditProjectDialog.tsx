@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import { useProjects, Project } from '@/hooks/useProjects';
 import { PROJECT_COLORS, PROJECT_ICONS, ProjectColor, ProjectIcon } from '@/lib/constants';
 import { cn } from '@/lib/utils';
@@ -41,6 +42,7 @@ export function EditProjectDialog({ project, open, onOpenChange }: EditProjectDi
   const [description, setDescription] = useState(project.description || '');
   const [color, setColor] = useState<ProjectColor>(project.color as ProjectColor);
   const [icon, setIcon] = useState<ProjectIcon>(project.icon as ProjectIcon);
+  const [staleEmail, setStaleEmail] = useState(project.stale_tasks_email ?? true);
 
   useEffect(() => {
     if (open) {
@@ -48,6 +50,7 @@ export function EditProjectDialog({ project, open, onOpenChange }: EditProjectDi
       setDescription(project.description || '');
       setColor(project.color as ProjectColor);
       setIcon(project.icon as ProjectIcon);
+      setStaleEmail(project.stale_tasks_email ?? true);
     }
   }, [open, project]);
 
@@ -61,6 +64,7 @@ export function EditProjectDialog({ project, open, onOpenChange }: EditProjectDi
       description: description.trim() || null,
       color,
       icon,
+      stale_tasks_email: staleEmail,
     });
 
     onOpenChange(false);
@@ -140,6 +144,16 @@ export function EditProjectDialog({ project, open, onOpenChange }: EditProjectDi
                 );
               })}
             </div>
+          </div>
+
+          <div className="flex items-center justify-between gap-4 rounded-xl border border-border p-3">
+            <div className="space-y-0.5">
+              <Label htmlFor="edit-stale-email">Седмичен имейл за непипани задачи</Label>
+              <p className="text-xs text-muted-foreground">
+                Всеки понеделник: задачите от този проект, непипани над 30 дни.
+              </p>
+            </div>
+            <Switch id="edit-stale-email" checked={staleEmail} onCheckedChange={setStaleEmail} />
           </div>
 
           <DialogFooter>

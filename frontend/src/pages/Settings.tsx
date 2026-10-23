@@ -43,6 +43,7 @@ import { SportSettingsCard } from '@/components/settings/SportSettingsCard';
 import { ProjectIdsCard } from '@/components/settings/ProjectIdsCard';
 import { OverdueTasksSettingsCard } from '@/components/settings/OverdueTasksSettingsCard';
 import { WeeklyReportSettingsCard } from '@/components/settings/WeeklyReportSettingsCard';
+import { StaleTasksEmailSettingsCard } from '@/components/settings/StaleTasksEmailSettingsCard';
 import AiIntegrationCard from '@/components/settings/AiIntegrationCard';
 
 export default function Settings() {
@@ -143,6 +144,9 @@ export default function Settings() {
 
         {/* Weekly Email Report */}
         <WeeklyReportSettingsCard />
+
+        {/* Седмичен имейл за задачи, непипани 30+ дни */}
+        <StaleTasksEmailSettingsCard />
 
         {/* Account Section */}
         <Card className="rounded-2xl">

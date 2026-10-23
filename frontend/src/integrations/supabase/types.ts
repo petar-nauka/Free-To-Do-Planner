@@ -265,6 +265,7 @@ export type Database = {
           display_name: string | null
           email: string | null
           id: string
+          stale_tasks_email: boolean
           updated_at: string
           user_id: string
         }
@@ -274,6 +275,7 @@ export type Database = {
           display_name?: string | null
           email?: string | null
           id?: string
+          stale_tasks_email?: boolean
           updated_at?: string
           user_id: string
         }
@@ -283,6 +285,7 @@ export type Database = {
           display_name?: string | null
           email?: string | null
           id?: string
+          stale_tasks_email?: boolean
           updated_at?: string
           user_id?: string
         }
@@ -342,6 +345,7 @@ export type Database = {
           id: string
           name: string
           position: number
+          stale_tasks_email: boolean
           updated_at: string
           user_id: string
         }
@@ -354,6 +358,7 @@ export type Database = {
           id?: string
           name: string
           position?: number
+          stale_tasks_email?: boolean
           updated_at?: string
           user_id: string
         }
@@ -366,6 +371,7 @@ export type Database = {
           id?: string
           name?: string
           position?: number
+          stale_tasks_email?: boolean
           updated_at?: string
           user_id?: string
         }
